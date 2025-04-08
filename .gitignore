@@ -1,5 +1,5 @@
 # Исключить папку MNIST
-MNIST/
+ml_3.0/homework_1/MNIST/
 
 # Исполняемые файлы
 *.exe
