@@ -1,5 +1,6 @@
 # Исключить папку MNIST
 ml_3.0/homework_1/MNIST/
+ml_3.0/homework_1/FashionMNIST/
 
 # Исполняемые файлы
 *.exe
