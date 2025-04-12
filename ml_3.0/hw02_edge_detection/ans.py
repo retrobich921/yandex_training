@@ -46,6 +46,7 @@ def compute_gradient_direction(sobel_x, sobel_y):
     return gradient_direction
 
 
+cell_size = 7
 def compute_hog(image, pixels_per_cell=(cell_size, cell_size), bins=9):
     if len(image.shape) == 3:
         image = np.mean(image, axis=2)
@@ -71,7 +72,6 @@ def compute_hog(image, pixels_per_cell=(cell_size, cell_size), bins=9):
             cell_hist = np.zeros(bins)
             for y in range(cell_height):
                 for x in range(cell_width):
-                    
                     bin_ind = int((cell_direction[y][x] + 180) // bin_width if cell_direction[y][x] + 180 < 360 else bins - 1)
                     cell_hist[bin_ind] += cell_magnitude[y][x]
 
