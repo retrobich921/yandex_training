@@ -1,6 +1,7 @@
 # Исключить папку MNIST
-ml_3.0/homework_1/MNIST/
-ml_3.0/homework_1/FashionMNIST/
+ml_3.0/hw01_classification/MNIST/
+ml_3.0/hw01_classification/FashionMNIST/
+ml_3.0/hw02_edge_detection/FashionMNIST/
 
 # Исполняемые файлы
 *.exe
