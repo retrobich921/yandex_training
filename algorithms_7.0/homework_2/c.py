@@ -8,7 +8,7 @@ class SegmentTree():
         
         self.n = n
         for i in range(n):
-            self.tree[(size >> 1) + i] = [a[i], 1]
+            self.tree[(size >> 1) + i] = [a[i], i+1]
             # print((size // 2 + i)>>1)
 
     def filling_max(self):
@@ -20,6 +20,15 @@ class SegmentTree():
             else:
                 self.tree[i] = [self.tree[i << 1][0], self.tree[i << 1][1] + self.tree[i << 1 | 1][1]]
         # print(*self.tree)
+
+    def filling_ind_max(self):
+        for i in range((len(self.tree) >> 1) - 1, 0, -1):
+            if self.tree[i << 1 | 1][0] > self.tree[i << 1][0]:
+                self.tree[i] = self.tree[i << 1 | 1]
+            elif self.tree[i << 1 | 1][0] < self.tree[i << 1][0]:
+                self.tree[i] = self.tree[i << 1]
+            else:
+                self.tree[i] = [self.tree[i << 1][0], self.tree[i << 1][1]]
 
     def query_max_count(self, node, left, right, l, r):
         if r <= left or right <= l:
@@ -38,6 +47,24 @@ class SegmentTree():
             return right_result
         else:
             return [left_result[0], left_result[1] + right_result[1]]
+        
+    def query_ind_max(self, node, left, right, l, r):
+        if r <= left or right <= l:
+            return [-float("inf"), 0]
+
+        if l <= left and right <= r:
+            return self.tree[node]
+
+        mid = (left + right) >> 1
+        left_result = self.query_ind_max(node << 1, left, mid, l, r)
+        right_result = self.query_ind_max(node << 1 | 1, mid, right, l, r)
+
+        if left_result[0] > right_result[0]:
+            return left_result
+        elif right_result[0] > left_result[0]:
+            return right_result
+        else:
+            return [left_result[0], left_result[1]]
 
 
 
@@ -45,12 +72,12 @@ def solve():
     n = int(input())
     a = list(map(int, input().split()))
     tree = SegmentTree(n, a)
-    tree.filling_max()
-    # print(tree.tree)
+    tree.filling_ind_max()
     q = int(input())
+
     for i in range(q):
         l, r = map(int, input().split())
-        print(*tree.query_max_count(1, 0, len(tree.tree) >> 1, l-1, r))
+        print(*tree.query_ind_max(1, 0, len(tree.tree) >> 1, l-1, r))
 
 
 if __name__ == "__main__":
