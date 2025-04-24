@@ -3,6 +3,7 @@ ml_3.0/hw01_classification/MNIST/
 ml_3.0/hw01_classification/FashionMNIST/
 ml_3.0/hw02_edge_detection/FashionMNIST/
 ml_3.0/hw03_panorama/images
+ml_3.0/hw04_overfitting/FashionMNIST
 
 # Исполняемые файлы
 *.exe
