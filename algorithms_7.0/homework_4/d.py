@@ -1,52 +1,15 @@
-from collections import deque
-
-
 def solve():
     n = int(input())
-    queue = deque()
+    apps = []
     for _ in range(n):
         q = input().split()
-
-
-
-    # q = ['']
-    # while q[0] != 'exit':
-    #     q = input().split()
-    #     if q[0] == 'push_front':
-    #         n = int(q[1])
-    #         queue.appendleft(n)
-    #         print('ok')
-    #     elif q[0] == 'push_back':
-    #         n = int(q[1])
-    #         queue.append(n)
-    #         print('ok')
-    #     elif q[0] == 'pop_front':
-    #         if len(queue) != 0:
-    #             print(queue.popleft())
-    #         else:
-    #             print('error')
-    #     elif q[0] == 'pop_back':
-    #         if len(queue) != 0:
-    #             print(queue.pop())
-    #         else:
-    #             print('error')
-    #     elif q[0] == 'front':
-    #         if len(queue) != 0:
-    #             print(queue[0])
-    #         else:
-    #             print('error')
-    #     elif q[0] == 'back':
-    #         if len(queue) != 0:
-    #             print(queue[-1])
-    #         else:
-    #             print('error')
-    #     elif q[0] == 'size':
-    #         print(len(queue))
-    #     elif q[0] == 'clear':
-    #         queue.clear()
-    #         print('ok')
-    #     elif q[0] == 'exit':
-    #         print('bye')
+        if q[0] == 'Run':
+            apps.append(' '.join(q[1:]))
+            print(apps[-1])
+        else:
+            cnt_plus = q[0].count('+')
+            print(apps[len(apps) - (cnt_plus % len(apps)) -1])
+            apps.append(apps.pop(len(apps) - (cnt_plus % len(apps)) -1))
 
 
 if __name__ == "__main__":
