@@ -26,18 +26,18 @@ def solve():
             else:
                 odd_orders.append(order)
 
-            odd_orders.sort(key=lambda x: x[0]-x[1])
-            left = 0
-            right = len(odd_orders) - 1
-            step = 0
-            while left <= right:
-                if step == 1:
-                    ans += odd_orders[left][1]
-                    left += 1
-                else:
-                    ans += odd_orders[right][0]
-                    right -= 1
-                step = 1 - step
+        odd_orders.sort(key=lambda x: x[0]-x[1])
+        left = 0
+        right = len(odd_orders) - 1
+        step = 0
+        while left <= right:
+            if step == 1:
+                ans += odd_orders[left][1]
+                left += 1
+            else:
+                ans += odd_orders[right][0]
+                right -= 1
+            step = 1 - step
         print(ans)
 
 
